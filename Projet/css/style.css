@@ -1,0 +1,32 @@
+#div1{
+	text-align:	left;
+	margin-left: 20px;
+	display: inline;
+	float: right;
+	width: 17%;
+	position: relative;
+	z-index: 2;
+	margin-top: 20px;
+}
+#div2{
+	display: inline;
+	float: left;
+	width: 70%;
+	position: relative;
+	z-index: 1;
+	margin-top: 20px;
+}
+#divim img{
+	text-align: right;
+	width: 200px;
+	height: 550px;
+	float: right;
+	margin-top: 50px;
+	margin-right: 10px;
+}
+#titre{
+	font-weight: bold;
+}
+#divGeneral, #centrer{
+	margin-top: 30px;
+}

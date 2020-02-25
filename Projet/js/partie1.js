@@ -1,0 +1,1 @@
+document.getElementById("masquer").style.display="none";

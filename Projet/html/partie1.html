@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Partie_1</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	
+	<script src="../d3/d3.js"></script>
+</head>
+<body>
+	<div class="row" id="divGeneral">
+		<div class="col-md-6" id="panneau" style="border-right: 2px solid black">
+			<h4>PANNEAU DE SAISIE</h4>
+			<form>
+				<div class="row">
+					<label class="col-md-4" for="nom">Nom de l'envoyé</label>
+					<input type="text" name="text" class="form-control col-md-8" id='nom'>
+				</div>
+				<div class="row">
+					<label class="col-md-4" for="select">Catégorie </label>
+					<select class="form-control col-md-8" id="select">
+						<option>Categorie A</option>
+						<option>Categorie B</option>
+						<option>Categorie C</option>
+					</select>
+				</div>
+				<div class="row">
+					<label class="col-md-4">Nombre d'heures</label>
+					<input type="number" name="heure" class="form-control col-md-8" min="0" id='heure'>
+				</div>
+				<div class="row">
+					<label class="col-md-12">A t-il effectué des heures supplémentaires?</label><br/>
+					<label class="col-md-11" for="non">Non</label>
+					<input type="radio" value="Nom" for="fr" name='fr' class="form-radio col-md-1" id='non' selected="selected">					
+					<label class="col-md-11" for="oui">Oui</label>
+					<input type="radio" value="Oui" for="fr" name='fr' class="form-radio col-md-1" id="oui">
+				</div>
+				<div class="row form-group" id="masquer">
+					<label class="col-sm-4" id='lab'>Heures Supplémentaires</label>
+					<input type="number" name="text" class="form-control col-sm-8" min="0" id='inpu'>
+				</div>
+				<div class="row">
+					<label class="col-md-4" >Avantages</label>
+					<input type="number" name="text" class="form-control col-md-8" id="av" min="0">
+				</div>
+				<div class="row" id="centrer">
+					<button class="btn btn-success col-md-2" id="ajout">Ajouter</button>
+					<label class="col-md-1"></label>
+					<button class="btn btn-danger col-md-2" id="annuler">Annuler</button>
+				</div>
+			</form>	
+		</div>
+		<div class="col-md-6" id="enregistrement">
+			<h4>ENREGISTREMENT</h4>
+			<div id="tab">
+				<table class="table table-striped" id="table">
+					<thead>
+						<th><td>Nom</td><td>Salaire</td><td>RAS</td><td>Salaire net</td></th>
+					</thead>
+					<tbody id='tbody'>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script src="partie1.js"></script>
+</body>
+</html>
