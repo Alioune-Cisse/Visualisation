@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../script/d3.js"> </script>
+      <style>
+
+            #cel1{
+            background: linear-gradient(to top, white, skyblue)  ;
+            }
+            .cycleColor
+            {
+            fill:  linear-gradient(to top, white, skyblue)  ;
+            }
+      </style>
+</head>
+<body id = "cel1">
+	<script>
+
+
+            //Définition du cadre SVG
+            var svg = d3.select("body").append("svg")
+            .attr("width",1300)
+            .attr("height",900);
+
+
+            //Définition du gradient web pour la couleur du soleil
+            var gradient = svg.append("defs")
+            .append("linearGradient")
+            .attr("id", "gradient")
+            .attr("x1", "0%")
+            .attr("y1", "0%")
+            .attr("x2", "100%")
+            .attr("y2", "100%");
+
+            gradient.append("stop")
+            .attr("offset", "0%")
+            .attr("stop-color", "red");
+
+            gradient.append("stop")
+            .attr("offset", "70%")
+            .attr("stop-color", "yellow");
+
+
+            //Définition des rectangles servant de case
+            var group = svg.append("g")
+            for (var i = 0; i<3; i++)
+            {
+           group.append("rect")
+            .attr("x",125+170*i)
+            .attr("y",665)
+            .attr("width",125)
+            .attr("height",75)
+            .style("fill","#C57E11 ")
+            .style("stroke","black")
+            .style("stroke-width","2");
+            }
+
+            var group1 = svg.append("g")
+            for (var i = 0; i<3; i++)
+            {
+	     group1.append("rect")
+            .attr("x",162+170*i)
+            .attr("y",700)
+            .attr("width",50)
+            .attr("height",40)
+            .style("fill","black")
+            .style("stroke","black")
+            .style("stroke-width","1");
+
+            }
+
+            //Définition du cercle servant de soleil plus animation
+            var circleMove = svg.append("circle")
+	     .attr("cx",0)
+            .attr("cy",200)
+            .attr("r",60)
+            .attr("fill", "url(#gradient)")
+
+            circleMove.transition()
+            .delay(50)
+            .duration(4000)
+            .attr("cx",1050)
+            .attr("cy",120);
+
+            var rect = svg.append("g");
+	     group.append("rect")
+            .attr("x",1000)
+            .attr("y",700)
+            .attr("width",80)
+            .attr("height",40)
+            .style("fill","silver")
+            .style("stroke","black")
+            .style("stroke-width","2");
+
+
+            //Définition des path servant d'oiseau, de corde de puit, de terrasse de case et d'arbre.
+
+            var cordePuit = svg.append("g")
+            group.append("path")
+            .attr("d", "M 1025 700 C 1025 700, 1040 590,  1055 700")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","3");
+
+
+            var oiseau1 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 1140 50 C 1140 50, 1165 40,  1180 55 C 1185 55, 1200 40,  1225 50  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+            var oiseau2 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 830 80 C 830 80, 855 70,  870 85 C 875 85, 890 70,  915 80  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+            var oiseau3 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 780 130 C 780 130, 805 120,  820 135 C 825 135, 840 120,  865 130  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+             var oiseau4 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 660 110 C 660 110, 685 100,  700 115 C 705 115, 720 100,  745 110  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+            var oiseau4 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 860 180 C 860 180, 885 170,  900 185 C 905 185, 920 170,  945 180  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+            var oiseau5 = svg.append("g")
+            group.append("path")
+            .attr("d", "M 940 240 C 940 240, 965 230,  980 245 C 985 245, 1000 230,  1025 240  ")
+            .style("stroke","black")
+            .style("fill","none")
+            .style("stroke-width","7");
+
+            var barrePuit = svg.append("g")
+            group.append("path")
+            .attr("d", "M 935 640 C 935 640, 1040 660,  1145 637")
+            .style("stroke","chocolate")
+            .style("fill","none")
+            .style("stroke-width","3");
+
+            var poteauPuitG = svg.append("g")
+            group.append("path")
+            .attr("d", "M 970 740 C 970 740, 973 730,  973 720 C 975 720, 971 710, 967 700 C 963 690, 968 680, 973 670 C 970 660, 960 660, 959 650 L 975 640 ")
+            .style("stroke","maroon")
+            .style("fill","none")
+            .style("stroke-width","5");
+
+
+            var poteauPuitD = svg.append("g")
+            group.append("path")
+            .attr("d", "M 1120 740 C 1120 740, 1120 730,  1120 720 C 1120 720, 1120 710, 1120 700 C 1120 690, 1110 680, 1110 670 C 1110 660, 1110 660, 1109 650 L 1125 640 ")
+            .style("stroke","maroon")
+            .style("fill","none")
+            .style("stroke-width","5");
+
+            var lineG = svg.append("g")
+            group.append("line")
+            .attr("x1",959)
+            .attr("y1",650)
+            .attr("x2",945)
+            .attr("y2",640)
+            .style("stroke","maroon")
+            .style("stroke-width","5");
+
+            var lineD = svg.append("g")
+            group.append("line")
+            .attr("x1",1109)
+            .attr("y1",650)
+            .attr("x2",1095)
+            .attr("y2",640)
+            .style("stroke","maroon")
+            .style("stroke-width","5");
+
+            var pointPuit = svg.append("g")
+            group.append("circle")
+            .attr("cx",1041)
+            .attr("cy",658)
+            .attr("r",5)
+            .attr("fill","black")
+            .attr("stroke","white");
+
+            var pointO = svg.append("g")
+            group.append("circle")
+            .attr("cx",1182)
+            .attr("cy",58)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var point1 = svg.append("g")
+            group.append("circle")
+            .attr("cx",872)
+            .attr("cy",90)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var point2 = svg.append("g")
+            group.append("circle")
+            .attr("cx",821)
+            .attr("cy",140)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var point3= svg.append("g")
+            group.append("circle")
+            .attr("cx",702)
+            .attr("cy",120)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var point4 = svg.append("g")
+            group.append("circle")
+            .attr("cx",901)
+            .attr("cy",190)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var point5 = svg.append("g")
+            group.append("circle")
+            .attr("cx",981)
+            .attr("cy",250)
+            .attr("r",6)
+            .attr("fill","black")
+            .attr("stroke","black");
+
+            var ellip = svg.append("g")
+            group.append("ellipse")
+            .attr("ry","20")
+            .attr("rx","40")
+            .attr("cx","760")
+            .attr("cy","625")
+            .style("fill","green")
+            .style("stroke","green");
+
+
+            var terrasseCase1 = svg.append("g")
+                  group.append("polyline")
+                  .attr("points", "125 665 205 600 170 600 250 665 ")
+                  .attr("fill","BurlyWood")
+                  .attr("stroke","black");
+
+            var terrasseCase2 = svg.append("g")
+                  group.append("polyline")
+                  .attr("points", "295 665 375 600 340 600 420 665 ")
+                  .attr("fill","BurlyWood")
+                  .attr("stroke","black");
+
+            var terrasseCase3 = svg.append("g")
+                  group.append("polyline")
+                  .attr("points", "465 665 545 600 510 600 590 665 ")
+                  .attr("fill","BurlyWood")
+                  .attr("stroke","black");
+
+
+            var troncArbre = svg.append("g")
+                  group.append("path")
+                  .attr("d", "M 770 740 C 770 740, 773 735,  776 720 C 776 720, 769 710, 767 700 C 760 690, 768 680, 773 670 C 770 660, 760 660, 759 650 L 745 650  L 755 670 C 755 670, 740 690, 755 710 C 765 720, 760 723, 755 740  z")
+                  .style("stroke","maroon")
+                  .style("stroke-width","2")
+                  .style("fill","maroon");
+                 
+            var arbre = svg.append("g")
+            group.append("path")
+            .attr("d", "M 750 650  750 650, 750 660, 770 640 C 780 630, 800 635, 810 620 C 810 620, 820 610, 810 600 C 810 600, 815 590 805 580 C 805 580 795 570 785 580 C 785 580, 775 570, 765 580 C 765 580, 755 570, 745 580 C 745 580, 735 570, 725 580 C 725 580, 715 570, 705 590 C 705 590, 695 600, 705 610 C 705 610, 695 620 705 630 C 705 630, 710 640, 715 635 C 715 635, 725 645, 735 645 C 735 645, 745 660, 750 650 "  )
+            .style("stroke","green")
+            .style("stroke-width","3")
+            .style("fill","green");
+
+            //ci dessous le code pour mettre des rayures sur le toit des cases
+            
+            var ligneCase1 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",135+5*i)
+            .attr("x2",135+5*i)
+            .attr("y1",655 -4*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+             var ligneCase2 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",305+5*i)
+            .attr("x2",305+5*i)
+            .attr("y1",655 -4*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+
+            var ligneCase3 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",190+5*i)
+            .attr("x2",190+5*i)
+            .attr("y1",612 +5*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+            var ligneCase4 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",360+5*i)
+            .attr("x2",360+5*i)
+            .attr("y1",612 +5*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+            var ligneCase5 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",475+5*i)
+            .attr("x2",475+5*i)
+            .attr("y1",655 -4*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+            var ligneCase6 = svg.append("g")
+            for (var i = 0; i<11; i++){
+                  group.append("line")
+            .attr("x1",530+5*i)
+            .attr("x2",530+5*i)
+            .attr("y1",612 +5*i)
+            .attr("y2",665)
+            .style("stroke","black")
+            .style("stroke-width","1");
+            }
+
+	</script>
+</body>
+</html>

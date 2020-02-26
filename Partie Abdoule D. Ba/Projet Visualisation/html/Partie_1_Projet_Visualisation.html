@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <script language="javascript" src="../script/Partie1.js"></script>
+	<title>Application Gestion Salaires</title>
+	 <link href="../css/style1.css" rel="stylesheet" type="text/css">
+
+	 <style>
+
+	input, select, #nom{
+	 	float: right;
+	 }
+	 #hg,#masked{
+	 	margin-right: 10%;
+	 	margin-left: 1%;
+	 	background-color: transparent;
+	 }
+	 </style>
+	
+ </head>
+ <body>
+    <div class="container">
+		<div class="row" style="height:70px; color:black; border:1px solid #000;"><br><br>
+			<h4><center><em>Application Gestion Salaires</em></center></h4>
+		</div>
+		<div class="row">
+			<div class="col-md-6" style="height:600px; border-left:1px solid #000; border-bottom:1px solid #000; border-right:1px solid #000; color:black; background:#E6E8FA;">
+				
+				<form action="javascript:" method="POST">
+				<center><h4>PANNEAU DE SAISIE</h4></center>
+				<form  class="table">
+					<label>Nom de l'Employ&eacute;</label><input type="text" id="nom" required/></br></br>
+					<label>Cat&eacute;gorie</label>
+					<select id="categorie" name="categorie">
+						<option value ="categorieA" id ="categorieA">Cat&eacute;gorie A</option>
+						<option value ="categorieB" id ="categorieB">Cat&eacute;gorie B</option>
+						<option value="categorieC" id = "categorieC">Cat&eacute;gorie C</option></select></br></br>
+					<label>Nombre d'heures</label><input type="number" min="0" max="140" id="nbHeure" required/></br></br>
+
+					<div class="row" id="hg">
+
+					<label>As t'il effectué des heures Supplémentaires ?</label></br>
+					<input type="radio" value="OUI" name="heurs" id="oui" onclick="afficher()">   OUI </br></br>
+					<input type="radio" value="NON" name="heurs" id = "non" onclick="masquer()">   NON </br></br>
+					
+					</div>
+
+					<div class="row form-group" id="masked" style.display="none">	
+					<label id = "hsm">Heures Supplémentaires</label><input type="number" id="heureSup" min = "0"/></br></br>
+
+					</div>
+				
+					<label>Avantage</label><input type="text" id="avantage"/></br></br>
+					
+					<input type="submit" id="bouton1" value="Ajouter"/><input type="reset" id="bouton2" value="Annuler"/>
+					
+				</form>
+		  </div>
+		<div class="col-md-6" style="height:600px; border-right:1px solid #000; border-bottom:1px solid #000; color:black; background:#E6E8FA;">
+		<center><h4>ENREGISTREMENT</center></h4><br/>
+		<div id="position1"> </div><br/>
+		<table id="enregistrement" class="table" border="1">
+			<tr><th>Nom</th><th>Salaire</th><th>Retenue &agrave; la Soure</th><th>Salaire Net</th></tr>
+		</table>	
+		</div>
+		</div>
+		<div class="row" style="height:80px; color:black; border:1px solid #000;">
+			
+		</div>
+	 </div>
+ 	</body>
+ 	</html>
