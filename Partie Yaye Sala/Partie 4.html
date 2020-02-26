@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	
+<head>
+	<meta charset="utf-8">
+	<style>
+	.axis{
+	font:10px sans-serif;
+	fill:none;
+	stroke:#000;
+	shape-rendering : crispEdges;
+	}
+
+        body { background-color: grey; }	
+
+	</style>
+</head>
+	
+<body>
+	
+	<script src="d3.js"></script>
+
+	
+	<script>
+
+	var color = ["brown", "orange", "red", "green", "blue"];
+
+
+
+	//Paramétrages des dimensions et des marges du graphique
+	var margin = {top:20, right:40, bottom:70, left:200},
+	width = 600, height = 400;
+
+	//Mise en place des axes
+	 var y = d3.scale.ordinal()
+	.rangeRoundBands([height, 0],0.10);
+	
+	var x = d3.scale.linear()
+	.range([0, width]);
+
+    // Mises en place des plages
+	var xAxis = d3.svg.axis()
+	.scale(x)
+	.orient("bottom");
+	
+	var yAxis = d3.svg.axis()
+	.scale(y)
+	.orient("left")
+	.ticks(10);
+	
+
+	//Mise en place du cadre de dessin
+	var svg = d3.select("body").append("svg")
+	.attr("width",width + margin.left + margin.right)
+	.attr("height",height + margin.top + margin.bottom)
+	.append("g")
+	.attr("transform","translate(" + margin.left + "." + margin.top + ")");
+
+	d3.json("data.json",function(data){
+		console.log(data)
+		var election=data
+	//Insertion des données
+	election.forEach(function(d){
+		d.nom = d.nom;
+		d.part = +d.part;
+		
+	});
+
+    // Mise en place des donnée dans le domaine
+	x.domain([0,d3.max(election, function(d){return d.part;})]);
+	y.domain(election.map(function(d){return d.nom;}));
+	
+
+	//Ajout de l'axe des x
+	svg.append("g")
+	.attr("class","x axis")
+	.attr("transform","translate(0,"+height+")")
+	.call(xAxis);
+
+	
+	//Ajout de l'axe des y
+	svg.append("g")
+	.attr("class","y axis")
+	.call(yAxis);
+	
+	
+	//Representation des données en bandes
+	var group = svg.append("g");
+	group.selectAll("bar")
+	.data(election)
+	.enter()
+	.append("rect")
+	.attr("class","bar")
+	.attr("x",function(d){return y(d.part);})
+	.attr("width",function(d){return x(d.part);})
+	.attr("y",function(d){return y(d.nom);})
+	.attr("height",y.rangeBand())
+	.attr("fill", function(d,i){return color[i] });
+	
+
+	
+    // Ajout de la légende
+	var legend = svg.append("g")
+	legend.selectAll("rect").data(color).enter().append('rect')
+	.attr("x",500)
+	.attr("y",function(d,i){return 250 -25*i})
+	.attr("width",15)
+	.attr("height",15)
+	.style("fill",function(d){return d});
+
+	legend.selectAll("text").data(election).enter().append("text")
+	.attr("x", 525)
+	.attr("y",function(d,i){return 265 -25*i})
+	.text(function(d){return d.nom});
+	
+	var text=svg.append("g")
+	text.append("text")
+	.attr("x", -(225))
+	.attr("y", -(100))
+	.attr("transform", "rotate(-90)")
+	.attr("text-anchor", "middle")
+	.attr("font-size",30)
+	.text("Candidat");
+
+	var text=svg.append("g")
+	text.append("text")
+	.attr("x", 275)
+	.attr("y", 450 )
+	.attr("text-anchor", "middle")
+	.attr("font-size",30)
+	.text("Resultat obtenu en %");
+
+})
+
+	
+	</script>
+	
+</body>
+</html>
+
